@@ -6,7 +6,6 @@ def import_bright_source_survey() -> list:
     Reads the Bright Source Survey Catalogue and converts each entry to their respective coordinates.
     :returns a list of tuples containing the coordinates in the form of (ascension, declination)
     """
-
     catalogue = np.loadtxt('data/bright_source_survey.dat', usecols=range(1, 7))
     data = []
 
@@ -27,7 +26,6 @@ def import_allsky_catalogue() -> list:
     Reads the All Sky Galaxy Catalogue.
     :returns a list of tuples containing the coordinates in the form of (ascension, declination)
     """
-
     catalogue = np.loadtxt('data/allsky_galaxy_catalogue.csv', skiprows=1, delimiter=',', usecols=[0, 1])
     data = []
 
@@ -69,8 +67,8 @@ def crossmatch(catalogue1, catalogue2, max_radius=5) -> tuple:
     catalogue2 = np.radians(catalogue2)
     max_radius = np.radians(max_radius)
 
-    sorted_indices = np.argsort(catalogue2[:, 1])
-    sorted_catalogue2 = catalogue2[sorted_indices]  # sorting catalogue according to ascending declinations
+    sorted_indices2 = np.argsort(catalogue2[:, 1])
+    sorted_catalogue2 = catalogue2[sorted_indices2]  # sorting catalogue according to ascending declinations
     declinations = sorted_catalogue2[:, 1]  # fetching only declinations
 
     for id1, (ascension1, declination1) in enumerate(catalogue1):
@@ -86,6 +84,7 @@ def crossmatch(catalogue1, catalogue2, max_radius=5) -> tuple:
                                                          start=start_index):
             distance = angular_dist(ascension1, declination1, ascension2, declination2)
 
+            # New closest match if the calculated distance is smaller than the previous closest distance
             if distance < closest_distance:
                 closest_distance = distance
                 closest_id2 = id2
@@ -93,7 +92,7 @@ def crossmatch(catalogue1, catalogue2, max_radius=5) -> tuple:
         if closest_distance > max_radius:
             no_matches.append(id1)
         else:
-            matches.append([id1, sorted_indices[closest_id2], np.degrees(closest_distance)])
+            matches.append([id1, sorted_indices2[closest_id2], np.degrees(closest_distance)])
 
     return matches, no_matches
 
