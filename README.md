@@ -11,3 +11,11 @@ The two catalogues used are:
 ## Why crossmatch?
 
 In this scenario, finding optical identifications for most of the radio sources allows us to see the different types of galaxies that can host supermassive black holes and also learn more about [Active Galactic Nuclei](https://en.wikipedia.org/wiki/Active_galactic_nucleus).
+
+## Instructions
+
+- Install pipenv to manage dependencies: `python -m pip install pipenv`
+- `cd` to project directory
+- Install dependencies using pipenv: `python -m pipenv install` 
+- Activate the virtual environment: `python -m pipenv shell`
+- Run crossmatcher: `python crossmatcher.py`
