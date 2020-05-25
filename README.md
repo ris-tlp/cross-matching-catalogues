@@ -1,6 +1,6 @@
 # Catalogue Crossmatcher
 
-Script that implements a crossmatching algorithm. Searches a second catalogue to find a counterpart for each object in the first catalogue. The coordinates in the two catalogues use the [Equatorial coordinate system](https://en.wikipedia.org/wiki/Equatorial_coordinate_system). To calculate the offset/distance between two objects, the [Haversine formula](https://en.wikipedia.org/wiki/Haversine_formula) is used.
+Script that implements a crossmatching algorithm. Searches a second catalogue to find a counterpart for each object in the first catalogue within a given radius. The coordinates in the two catalogues use the [Equatorial coordinate system](https://en.wikipedia.org/wiki/Equatorial_coordinate_system). To calculate the offset/distance between two objects, the [Haversine formula](https://en.wikipedia.org/wiki/Haversine_formula) is used.
 
 The two catalogues used are:  
 
